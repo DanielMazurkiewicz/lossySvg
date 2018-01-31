@@ -3,7 +3,7 @@ Minified SVG vector file paths (for purpouse of web icons)
 
 # Introduction
 
-This tool is not intended to work with entire SVG files, it works only with PATH elements of SVG files. It currently works well with potrace vectorized bitmaps (Inscape vectorized too, since it uses potrace). Its aim is to produce as minimal as possible output, with single colored vector images. It can be used in plain javascript to set 'path' property on DOM element and style its color via CSS, or can minify existing SVG files.
+This tool is not intended to work with entire SVG files, it works only with PATH elements of SVG files. It currently works well with potrace vectorized bitmaps (Inscape vectorized too, since it uses potrace). Its aim is to produce as minimal as possible output, with single colored vector images. It can be used in plain javascript to set 'd' property of SVG 'PATH' element in DOM and style its color later via CSS, or can minify existing SVG files.
 For details of module usage have a quick look into a code, it is not very clean yet, but nothing super fancy there.
 
 # Installation

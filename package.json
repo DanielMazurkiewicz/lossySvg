@@ -1,6 +1,6 @@
 {
-  "name": "LossySVG",
-  "version": "1.0.0",
+  "name": "lossysvg",
+  "version": "1.0.1",
   "description": "Minified SVG vector file paths (for purpouse of web icons)",
   "main": "lossySvgPath.js",
   "preferGlobal": true,
@@ -13,6 +13,30 @@
   "dependencies": {
     "htmljs-parser": ">=2.3.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielMazurkiewicz/lossySvg.git"
+  },
+  "keywords": [
+    "javascript",
+    "svg",
+    "minify",
+    "compress",
+    "react",
+    "angular",
+    "jsfwk",
+    "node",
+    "spa",
+    "browser",
+    "app",
+    "application",
+    "apps",
+    "module"
+  ],
   "author": "Daniel Mazurkiewicz",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanielMazurkiewicz/lossySvg/issues"
+  },
+  "homepage": "https://github.com/DanielMazurkiewicz/lossySvg#readme"
 }
