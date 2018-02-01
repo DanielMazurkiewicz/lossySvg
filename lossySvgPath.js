@@ -710,7 +710,7 @@ const readAndConvert = (inputFile, options, callback) => {
       'convertShapeToPath', 
       'mergePaths'
     ], svgOptimized => {
-        const lossySvg = createSvg(convert(svgOptimized.data, options));
+        const lossySvg = createSvg(convert(svgOptimized, options));
         svgoOptimize(lossySvg, [
           'convertPathData'
         ], svgCompressed => {
