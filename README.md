@@ -16,8 +16,10 @@ npm install -g lossysvg
 # Command line
 
 Example usages:
+```
       lossysvg -i ./image.jpg -m -s -j -t 100 -p 1.5 -d 3 -c green
       lossysvg -i ./image.svg -m -s -j -p 1.5 -d 3 -c blue
+```
 
 Command line options:
 ```

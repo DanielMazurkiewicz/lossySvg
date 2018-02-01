@@ -1,6 +1,6 @@
 {
   "name": "lossysvg",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Minified SVG vector file paths (for purpouse of web icons)",
   "main": "lossySvgPath.js",
   "preferGlobal": true,
