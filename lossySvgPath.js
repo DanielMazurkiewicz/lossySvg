@@ -678,6 +678,66 @@ const convert = function(svgText, options) {
 }
 
 
+const SVGO = require('svgo');
+const potrace = require('potrace');
+const path = require('path');
+const fs = require('fs');
+
+const svgoOptimize = (svg, plugins, callback) => {
+		const svgo = new SVGO({
+      plugins
+    });
+		svgo.optimize(svg)
+      .then(function(svgOptimized) {
+        callback(svgOptimized.data);
+      });
+}
+
+const readAndConvert = (inputFile, options, callback) => {
+  if (!inputFile) return;
+  const ext = path.extname(inputFile);
+
+  if (ext === '.svg') {
+    const svg = fs.readFileSync(inputFile, 'utf8'); // => null, <data>
+    if (!svg.length) return;
+
+    svgoOptimize(svg, [
+      'removeHiddenElems', 
+      'convertStyleToAttrs', 
+      'collapseGroups', 
+      'convertTransform', 
+      'convertPathData', 
+      'convertShapeToPath', 
+      'mergePaths'
+    ], svgOptimized => {
+        const lossySvg = createSvg(convert(svgOptimized.data, options));
+        svgoOptimize(lossySvg, [
+          'convertPathData'
+        ], svgCompressed => {
+          callback(convert(svgCompressed), svg.length, svg);
+        });
+    });
+
+    return;
+  }
+
+  const params = {threshold: options.threshold};
+  potrace.trace(inputFile, params, function(err, svg) {
+    if (err) {
+      console.log('ERROR (potrace):');
+      console.log(err);
+    }
+
+    const lossySvg = createSvg(convert(svg, options));
+    svgoOptimize(lossySvg, [
+      'convertPathData'
+    ], svgCompressed => {
+      callback(convert(svgCompressed), svg.length, svg);
+    });
+
+  });
+
+}
 
 module.exports = {
   createVec,
@@ -690,5 +750,6 @@ module.exports = {
   getRelativePathInstructions,
   getIntegerAbsolutePathInstructions,
   compactInstructions,
-  convert
+  convert,
+  readAndConvert
 }
